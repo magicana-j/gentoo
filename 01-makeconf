@@ -1,0 +1,12 @@
+#!/bin/sh
+
+cat << EOF >> /mnt/gentoo/etc/portage/make.conf
+COMMON_FLAGS="${COMMON_FLAGS} -march=native"
+VIDEO_CARDS="intel"
+MAKEOPTS="-j5"
+ACCEPT_LICENSE="*"
+FEATURES="${FEATURES} parallel-install parallel-fetch"
+FEATURES="${FEATURES} getbinpkg binpkg-request-signature"
+GRUB_PLATFORMS="efi-64"
+USE="${USE} pulseaudio networkmanager bluetooth"
+EOF
