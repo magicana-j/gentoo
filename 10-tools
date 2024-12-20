@@ -1,0 +1,9 @@
+#!/bin/sh
+emerge --ask app-admin/sysklogd
+rc-update add sysklogd default
+
+emerge --ask sys-process/cronie
+rc-update add cronie default
+
+emerge --ask net-misc/chrony
+rc-update add chronyd default
