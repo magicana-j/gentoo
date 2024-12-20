@@ -1,0 +1,5 @@
+#!/bin/sh
+emerge --ask app-shells/bash-completion
+emerge --ask www-client/firefox-bin
+emerge --ask media-fonts/noto noto-emoji
+emerge --ask media-fonts/ja-ipafonts media-fonts/vlgothic media-fonts/ipamonafont
