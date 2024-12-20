@@ -3,3 +3,10 @@ mkfs.vfat -F 32 /dev/sda1
 mkfs.ext4 /dev/sda3
 mkswap /dev/sda2
 swapon /dev/sda2
+
+mkdir -p /mnt/gentoo
+mount /dev/sda3 /mnt/gentoo
+mkdir -p /mnt/gentoo/efi
+mount /dev/sda1 /mnt/gentoo/efi
+
+cd /mnt/gentoo
