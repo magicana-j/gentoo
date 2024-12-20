@@ -1,0 +1,18 @@
+#!/bin/sh
+rm -r /etc/portage/package.use
+touch /etc/portage/package.use
+
+cat << EOF >> /etc/portage/package.use
+*/* L10N: en ja
+sys-kernel/installkernel grub dracut
+app-admin/doas pam persist
+net-misc/networkmanager tools wext wifi bluetooth iwd nftables policykit resolvconv syslog 
+app-editors/vim vim-pager
+app-editors/neovim nvim-pager
+app-i18n/fcitx-configtool config-qt
+app-i18n/mozc fcitx5 gui
+EOF
+
+getuto
+
+emerge-webrsync
