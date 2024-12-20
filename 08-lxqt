@@ -1,0 +1,13 @@
+#!/bin/sh
+cat << EOF >> /etc/portage/package.use lxqt-base/lxqt-meta about \
+ admin  archiver desktop-portal display-manager filemanager \
+ lximage nls powermanagement processviewer screenshot \
+ sddm terminal trash window-manager policykit
+
+x11-libs/libfm vala
+
+EOF
+emerge --ask lxqt-base/lxqt-meta
+
+rc-update add NetworkManager default
+emerge --ask gnome-extra/nm-applet
