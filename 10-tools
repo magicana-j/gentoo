@@ -1,11 +1,12 @@
 #!/bin/sh
-emerge --ask dev-vcs/git app-admin/doas neofetch
+emerge dev-vcs/git app-admin/doas neofetch
 
-emerge --ask app-admin/sysklogd
+emerge app-admin/sysklogd
 rc-update add sysklogd default
 
-emerge --ask sys-process/cronie
+emerge sys-process/cronie
 rc-update add cronie default
 
-emerge --ask net-misc/chrony
+emerge net-misc/chrony
+chronyd -q
 rc-update add chronyd default
