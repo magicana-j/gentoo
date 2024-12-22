@@ -7,4 +7,6 @@ EOF
 
 echo 'gentoo' /etc/hostname
 
+ln -sf ../usr/share/zoneinfo/Asia/Tokyo /etc/localtime
+
 echo '*** Set root password and add a user. ***'
