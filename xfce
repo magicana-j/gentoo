@@ -3,6 +3,11 @@ cat << EOF >> /etc/portage/package.use/xfce
 app-text/poppler -qt5
 EOF
 
-emerge --ask --oneshot xfce-extra/xfce4-notifyd
+emerge --oneshot xfce-extra/xfce4-notifyd
+
+#USE="pulseaudio"
+
+emerge media-sound/pulseaudio
+
 emerge net-misc/networkmanager
 emerge xfce-base/xfce4-meta
