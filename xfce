@@ -1,0 +1,4 @@
+#!/bin/sh
+cat << EOF >> /etc/portage/package.use/xfce
+app-text/poppler -qt5
+EOF
