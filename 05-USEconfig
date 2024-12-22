@@ -15,8 +15,8 @@ getuto
 emerge-webrsync
 emerge --sync
 
-cat << EOF >> /etc/portage/default
-USE="-gtk -gnome qt5 kde alsa"
+cat << EOF >> /etc/portage/make.conf/default
+USE="${USE} -gtk -gnome qt5 kde alsa"
 EOF
 
 emerge --ask --verbose --update --deep --newuse --getbinpkg @world
