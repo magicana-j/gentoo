@@ -2,7 +2,7 @@
 
 mv /mnt/gentoo/etc/portage/make.conf /mnt/gentoo/etc/portage/make.conf.bak
 rm -f /mnt/gentoo/etc/portage/make.conf
-mkdir /mnt/gentoo/etc/portage/make.conf
+mkdir -p /mnt/gentoo/etc/portage/make.conf
 mv /mnt/gentoo/etc/portage/make.conf.bak /mnt/gentoo/etc/portage/make.conf/default
 cat << EOF >> /mnt/gentoo/etc/portage/make.conf/default
 COMMON_FLAGS="${COMMON_FLAGS} -march=native"
