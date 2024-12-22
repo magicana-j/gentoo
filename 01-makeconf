@@ -11,5 +11,5 @@ MAKEOPTS="-j5"
 ACCEPT_LICENSE="*"
 FEATURES="parallel-install parallel-fetch getbinpkg binpkg-request-signature"
 GRUB_PLATFORMS="efi-64"
-#USE="pulseaudio networkmanager"
+USE="pulseaudio networkmanager"
 EOF
