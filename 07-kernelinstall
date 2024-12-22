@@ -1,4 +1,5 @@
 #!/bin/sh
+emerge sys-kernel/linux-firmware sys-firmware/intel-microcode
 emerge sys-kernel/installkernel gentoo-kernel-bin
 echo 'USE="${USE} dist-kernel"' >> /etc/portage/make.conf/default
-emerge --ask sys-kernel/linux-firmware sys-firmware/intel-microcode
+
