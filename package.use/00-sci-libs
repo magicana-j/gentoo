@@ -1,4 +1,0 @@
-# This file has been automatically generated, do not edit.
-
-sci-libs/hdf5 cxx szip -mpi -threads
-sci-libs/lapack lapacke
