@@ -1,3 +1,0 @@
-# This file has been automatically generated, do not edit.
-
-FEATURES="parallel-fetch parallel-install protect-owned candy fakeroot getbinpkg binpkg-request-signature buildpkg compressdebug splitdebug -userpriv"
