@@ -4,11 +4,8 @@ net-libs/webkit-gtk compiler-clang-lto -gnome-online-accounts
 app-editors/vim vim-pager
 app-editors/neovim nvim-pager
 
+app-gui/waybar pulseaudio pipewire tray logind network
 app-i18n/mozc gui ibus
+
 net-misc/networkmanager tools wifi
-
-x11-libs/xapp introspection
-media-libs/libcanberra pulseaudio
-
-net-firewall/iptables nftables
 
