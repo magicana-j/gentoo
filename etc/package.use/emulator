@@ -1,0 +1,4 @@
+net-misc/spice-gtk usbredir
+net-dns/dnsmasq script
+net-libs/gnutls tools pkcs11
+
