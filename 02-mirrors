@@ -1,0 +1,6 @@
+#!/bin/sh
+cat << EOF >> /etc/portage/make.conf
+GENTOO_MIRRORS = "https://ftp.jaist.ac.jp/pub/Linux/Gentoo/ \
+ 	https://ftp.riken.jp/Linux/gentoo/ \
+  https://repo.jing.rocks/gentoo"
+EOF
