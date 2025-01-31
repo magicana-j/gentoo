@@ -1,22 +1,20 @@
 #!/bin/sh
 
-cat << EOF >> /etc/portage/package.use/list
+rm -rf /etc/portage/package.use
+touch /etc/portage/package.use
+
+cat << EOF >> /etc/portage/package.use
 */* L10N: en ja
-sys-kernel/installkernel grub dracut
 app-admin/doas pam persist
 app-editors/vim vim-pager
 app-editors/neovim nvim-pager
 app-i18n/fcitx-configtool config-qt
-app-i18n/mozc fcitx5 gui
+dev-qt/qtwebengine jumbo-build
+media-video/ffmpeg fdk
+net-firewall/iptables nftables
+net-libs/webkit-gtk jumbo-build
+sys-kernel/installkernel grub dracut
 EOF
 
-getuto
-
-emerge-webrsync
-emerge --sync
-
-cat << EOF >> /etc/portage/make.conf/default
-USE="${USE} -gtk -gnome qt5 kde alsa"
-EOF
-
-emerge --ask --verbose --update --deep --newuse --getbinpkg @world
+emerge-webrsync && emerge --sync
+emerge -auDN --getbinpkg @world
