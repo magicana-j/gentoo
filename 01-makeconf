@@ -8,8 +8,8 @@ cat << EOF >> /mnt/gentoo/etc/portage/make.conf/default
 COMMON_FLAGS="${COMMON_FLAGS} -march=native"
 VIDEO_CARDS="intel"
 MAKEOPTS="-j5"
-ACCEPT_LICENSE="*"
+ACCEPT_LICENSE="* -@EULA"
 FEATURES="parallel-install parallel-fetch getbinpkg binpkg-request-signature"
 GRUB_PLATFORMS="efi-64"
-USE="pulseaudio networkmanager"
+USE="pulseaudio networkmanager wifi"
 EOF
