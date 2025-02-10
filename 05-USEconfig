@@ -8,7 +8,6 @@ cat << EOF >> /etc/portage/package.use
 app-admin/doas pam persist
 app-editors/vim vim-pager
 app-editors/neovim nvim-pager
-app-i18n/fcitx-configtool config-qt
 dev-qt/qtwebengine jumbo-build
 media-video/ffmpeg fdk
 net-firewall/iptables nftables
