@@ -1,12 +1,15 @@
 #!/bin/sh
 
-cat << EOF >> /etc/portage/make.conf/default
+cat << EOF >> /etc/portage/make.conf
 COMMON_FLAGS="${COMMON_FLAGS} -march=native"
 VIDEO_CARDS="intel"
-MAKEOPTS="-j5"
+MAKEOPTS="-j4"
+EMERGE_DEFAULT_OPTS="--jobs 4"
 ACCEPT_LICENSE="* -@EULA"
 ACCEPT_KEYWORDS="-~amd64"
 FEATURES="parallel-install parallel-fetch getbinpkg binpkg-request-signature"
-GRUB_PLATFORMS="efi-64"
-USE="pulseaudio networkmanager wifi"
+USE="networkmanager"
+GENTOO_MIRRORS="https://ftp.jaist.ac.jp/pub/Linux/Gentoo/ \
+    https://repo.jing.rocks/gentoo \
+    https://ftp.riken.jp/Linux/gentoo/"
 EOF
