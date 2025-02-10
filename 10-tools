@@ -1,5 +1,5 @@
 #!/bin/sh
-emerge dev-vcs/git app-admin/doas neofetch
+emerge sudo neofetch
 
 emerge app-admin/sysklogd
 rc-update add sysklogd default
