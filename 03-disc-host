@@ -1,12 +1,6 @@
 #!/bin/sh
-cat << EOF >> /etc/fstab
-/dev/sda1   /efi        vfat    umask=0077                   0 2
-/dev/sda2   none        swap    sw                           0 0
-/dev/sda3   /           ext4     defaults,noatime             0 1
-EOF
-
 echo 'gentoo' /etc/hostname
-
 ln -sf ../usr/share/zoneinfo/Asia/Tokyo /etc/localtime
-
 echo '*** Set root password and add a user. ***'
+echo '** passwd'
+echo '** useradd -m -G user,wheel,audio -s $(which bash) USER'
