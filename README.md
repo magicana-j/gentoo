@@ -4,6 +4,6 @@
 
 sudo emerge *package*
 
-## Queey
+## Query
 
 equery -q list *package*
