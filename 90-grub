@@ -1,9 +1,9 @@
 #!/bin/sh
 grub-install --efi-directory=/efi
 
-cat << EOF >> /etc/default/grub
-GRUB_GFXMODE=1680x1050x24
-GRUB_GFXPAYLOAD_LINUX=keep
-EOF
+#cat << EOF >> /etc/default/grub
+#GRUB_GFXMODE=1680x1050x24
+#GRUB_GFXPAYLOAD_LINUX=keep
+#EOF
 
 grub-mkconfig -o /boot/grub/grub.cfg
