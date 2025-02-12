@@ -4,7 +4,5 @@ emerge-webrsync && emerge --sync
 emerge -auDN --getbinpkg @world
 
 emerge sys-kernel/linux-firmware
-emerge sys-firmware/intel-microcode
-emerge sys-kernel/installkernel
-emerge gentoo-kernel-bin
+emerge sys-kernel/installkernel gentoo-kernel-bin
 echo 'USE="${USE} dist-kernel"' >> /etc/portage/make.conf/default
