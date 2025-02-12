@@ -1,5 +1,5 @@
 #!/bin/sh
-emerge sudo neofetch
+emerge sudo fastfetch htop
 
 emerge app-admin/sysklogd
 rc-update add sysklogd default
