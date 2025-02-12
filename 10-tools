@@ -1,5 +1,5 @@
 #!/bin/sh
-emerge sudo fastfetch htop
+emerge sudo fastfetch htop vim neovim nano
 
 emerge app-admin/sysklogd
 rc-update add sysklogd default
