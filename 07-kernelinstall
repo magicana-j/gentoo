@@ -1,4 +1,8 @@
 #!/bin/sh
+
+emerge-webrsync && emerge --sync
+emerge -auDN --getbinpkg @world
+
 emerge sys-kernel/linux-firmware
 emerge sys-firmware/intel-microcode
 emerge sys-kernel/installkernel
