@@ -1,5 +1,7 @@
 #!/bin/sh
-echo 'gentoo' /etc/hostname
+hname=gentoo
+echo $hname > /etc/hostname
+echo "127.0.1.1 $hname" >> /etc/hosts
 ln -sf ../usr/share/zoneinfo/Asia/Tokyo /etc/localtime
 echo '*** Set root password and add a user. ***'
 echo '** passwd'
