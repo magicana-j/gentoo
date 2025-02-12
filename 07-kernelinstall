@@ -3,6 +3,10 @@
 emerge-webrsync && emerge --sync
 emerge -auDN --getbinpkg @world
 
+cat << EOF >> /etc/portage/make.conf
+ACCEPT_LICENSE="* -@EULA"
+EOF
+
 emerge sys-kernel/linux-firmware
 emerge sys-kernel/installkernel gentoo-kernel-bin
-echo 'USE="${USE} dist-kernel"' >> /etc/portage/make.conf/default
+echo 'USE="${USE} dist-kernel"' >> /etc/portage/make.conf
