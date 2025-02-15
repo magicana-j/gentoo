@@ -8,6 +8,7 @@ EMERGE_DEFAULT_OPTS="--jobs 4"
 ACCEPT_KEYWORDS="-~amd64"
 FEATURES="parallel-install parallel-fetch getbinpkg binpkg-request-signature"
 USE="networkmanager"
+INPUT_DEVICES="synaptics libinput"
 GENTOO_MIRRORS="https://ftp.jaist.ac.jp/pub/Linux/Gentoo/ \
     https://repo.jing.rocks/gentoo \
     https://ftp.riken.jp/Linux/gentoo/"
