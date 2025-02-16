@@ -1,0 +1,122 @@
+cfdisk /dev/sda
+
+#####
+#
+# sda1	1G	EFI
+# sda2	8G	swap
+# sda3	rest	xfs
+#
+#####
+
+mkfs.vfat -F 32 /dev/sda1
+mkfs.swap /dev/sda2
+swapon /dev/sda2
+mkfs.xfs /dev/sda3
+
+mkdir -p /mnt/gentoo
+mount /dev/sda3 /mnt/gentoo
+mkdir -p /mnt/gentoo/efi
+mount /dev/sda1 /mnt/gentoo/efi
+
+cd /mnt/gentoo
+links gentoo.org/downloads/mirrorlist
+
+(download)
+
+tar xpfv stage3-*.tar.xz --xattrs-include='*.*' --numeric-owner -C .
+
+cd /mnt/gentoo
+cp -L /etc/resolv.conf ./etc/
+mount -t proc /proc proc
+mount --rbind /dev dev
+mount --rbind /sys sys
+mount --bind /run run
+
+chroot . /bin/bash
+. /etc/profile
+export PS1="(chr) ${PS1}"
+
+mount /dev/sda1 /efi
+
+nano /etc/portage/make.conf
+```
+COMMON_FLAGS="-march=native -O2 -pipe"
+RUSTFLAGS="${RUSTFLAGS} -C target-cpu=native"
+
+MAKEOPTS="-j4"
+EMERGE_DEFAULT_OPTS="--jobs 4"
+FEATURES="parallel-fetch parallel-install getbinpkg binpkg-request-signature"
+ACCEPT_KEYWORDS="-~amd64"
+ACCEPT_LICENSE="* -@EULA"
+USE="networkmanager"
+GRUB_PLATFORMS="efi-64"
+```
+
+rm /etc/portage/package.use
+nano /etc/portage/package.use
+
+```
+*/* L10N: en ja
+*/* VIDEO_CARDS: intel i915
+sys-kernel/installkernel grub dracut
+```
+
+emerge-webrsync
+emerge -a mirrorselect
+mirrorselect -i -o >> /etc/portage/make.conf
+
+nano /etc/portage/binrepos.conf/gentoobinhost.conf
+```
+priority = 9999
+sync-uri = https://repo.jing.rocks/gentoo/releases/amd64/binpackages/23.0/x86-64/
+```
+
+emerge --sync && emerge -auDN @world
+
+emerge -a sudo nano vim neovim htop fastfetch sysklogd cronie chrony bash-completion xfsprogs e2fsprogs dosfstools ntfs3g
+
+emerge -a sys-kernel/linux-firmware
+emerge -a sys-kernel/installkernel gentoo-kernel-bin
+emerge -a sys-kernel/gentoo-sources
+
+nano /etc/portage/make.conf
+```
+USE="dist-kernel networkmanager"
+```
+
+emerge -a networkmanager nm-applet
+rc-update add NetworkManager default
+rc-update add sysklogd default
+rc-update add chronie default
+rc-update add chronyd default
+
+grub-install --efi-directory=/efi
+grub-mkconfig -o /efi/EFI/Gentoo/grub.cfg
+
+nano /etc/fstab
+```
+/dev/sda1	/efi	vfat	umask=0077	0 2
+/dev/sda2	none	swap	sw	0 0
+/dev/sda3	/	xfs	defaults,noatime	0 1
+```
+
+echo gentoo > /etc/hostname
+
+
+passwd
+useradd -m -G users,wheel,audio -s /bin/bash USERNAME
+
+passwd USERNAME
+
+nano /etc/conf.d/keymaps
+nano /etc/conf.d/hwclock
+
+passwd -dl root
+
+rm /stage3-*.tar.*
+
+exit
+cd
+umount -l /mnt/gentoo/dev{/shm,/pts}
+umount -R /mnt/gentoo
+poweroff
